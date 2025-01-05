@@ -1,8 +1,17 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from datetime import date
+import logging
 import json
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(message)s',
+    handlers=[
+        logging.FileHandler("api-test.log"),
+        logging.StreamHandler()
+    ]
+)
 
 app = FastAPI()
 
@@ -34,6 +43,7 @@ def save_data(data):
         json.dump(data, file, indent=4)
 
 # Endpoints
+# Listar vehiculos disponibles
 @app.get("/cars", response_model=list[Cars])
 def get_cars(for_date: date):
     data = load_data()
@@ -41,26 +51,30 @@ def get_cars(for_date: date):
     available_cars = [Cars(**car) for car in data["cars"] if car["available"] and car["id"] not in reserved_cars]
     return available_cars
 
+# Crear una reserva
 @app.post("/bookings")
 def create_booking(booking: Bookings):
-    """Crea una reserva para un auto en una fecha específica."""
     data = load_data()
 
     # Verificar si el auto existe
     if booking.car_id not in {car["id"] for car in data["cars"]}:
         raise HTTPException(status_code=404, detail="Car not found")
+        logging.error(f"Car {booking.car_id} not found")
 
     # Validar que la fecha no sea en el pasado
     if booking.date < date.today():
         raise HTTPException(status_code=400, detail="Cannot book in the past")
+        logging.error(f"Cannot book in the past {booking.date}")
 
     # Validar si el auto ya está reservado en la misma fecha
     if any(b["car_id"] == booking.car_id and b["date"] == booking.date.isoformat() for b in data["bookings"]):
         raise HTTPException(status_code=400, detail="Car already booked on this date")
+        logging.error(f"Car {booking.car_id} already booked on {booking.date}")
 
     # Registrar la reserva
     data["bookings"].append({"car_id": booking.car_id, "date": booking.date.isoformat()})
     save_data(data)
+    logging.info(f"Booking created for car {booking.car_id} on {booking.date}")
     return {"message": "Booking created successfully"}
 
 
