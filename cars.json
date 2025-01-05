@@ -1,0 +1,43 @@
+{
+    "cars": [
+        {
+            "id": 1,
+            "model": "Toyota Corolla",
+            "available": true
+        },
+        {
+            "id": 2,
+            "model": "Honda Civic",
+            "available": true
+        },
+        {
+            "id": 3,
+            "model": "Ford Focus",
+            "available": true
+        },
+        {
+            "id": 4,
+            "model": "Chevrolet Malibu",
+            "available": true
+        },
+        {
+            "id": 5,
+            "model": "Nissan Sentra",
+            "available": true
+        }
+    ],
+    "bookings": [
+        {
+            "car_id": 1,
+            "date": "2025-01-05"
+        },
+        {
+            "car_id": 5,
+            "date": "2025-01-05"
+        },
+        {
+            "car_id": 5,
+            "date": "2025-01-06"
+        }
+    ]
+}
