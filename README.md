@@ -43,6 +43,12 @@ To start the tests we will use:
     pytest tests/tests.py
 
 
+In case you get an error when starting the tests, use this command and start them again.
+
+
+    set PYTHONPATH=.
+    
+
 ## Design 
 
 The structure of the application has been designed in a modular way for ease of maintenance, scalability and code clarity. The main reasons behind the organisation are detailed below:
