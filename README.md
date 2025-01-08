@@ -8,12 +8,11 @@ The API allows managing available vehicles for booking, as well as creating book
 
 ## Requirements
 
-- Python 3.7+
-- FastAPI
-- Uvicorn
-- Pydantic
-- Logging
-- Pytest
+- fastapi==0.95.0
+- uvicorn==0.23.0
+- pydantic==1.11.1
+- pytest==7.2.2
+- httpx==0.23.0 
 
 ## Installation
 
