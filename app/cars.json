@@ -17,23 +17,27 @@
         },
         {
             "id": 4,
-            "model": "Hyundai Elantra",
+            "model": "Chevrolet Malibu",
             "available": true
         },
         {
             "id": 5,
-            "model": "Chevrolet Cruze",
+            "model": "Nissan Sentra",
             "available": true
         }
     ],
     "bookings": [
         {
-            "car_id": 2,
-            "date": "2025-01-14"
+            "car_id": 1,
+            "date": "2025-01-07"
+        },
+        {
+            "car_id": 3,
+            "date": "2025-01-07"
         },
         {
             "car_id": 1,
-            "date": "2025-01-10"
+            "date": "2025-01-09"
         }
     ]
 }
