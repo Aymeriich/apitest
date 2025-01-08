@@ -34,15 +34,15 @@ The API allows managing available vehicles for booking, as well as creating book
 
 Once the dependencies are installed you will be able to start the application or start with the unit tests, to start it locally we will use inside the app directory:
 
-    ```
+
     uvicorn app.main:app --reload
-    ```
+
 
 To start the tests we will use:
 
-    ```
+
     pytest tests/tests.py
-    ```
+
 
 ## Design 
 
